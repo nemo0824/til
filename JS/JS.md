@@ -3,7 +3,8 @@
 
 #### 쓰로틀링 (일정 시간 동안)
  이벤트가 많이 발생하더라도 일정시간 동안 이벤트가 1번만 발생하도록 처리하는것
-    
+
+```javascript
 let timer = 0;
 
 const handleLogin = () =>{
@@ -18,6 +19,7 @@ const handleLogin = () =>{
         timer =0;
     }, 3000)
 }
+```
 
 코드설명
 timer = 0  // 타이머를 0초로설정
@@ -44,7 +46,7 @@ click 했을시에 handleLogin 함수가 호출된다 가정하고
 ### 디바운싱  (마지막 이벤트 기준으로 시간이지나면)
  이벤트가 많이 발생하더라도 마지막 이벤트 기준으로 일정시간이 지나면 이벤트를 1번만 발생하도록 처리하는것
 
-    
+```javascript    
 let timer = 0;
 
 const handleLogin = () =>{
@@ -59,3 +61,4 @@ const handleLogin = () =>{
         timer =0;
     }, 3000)
 }
+```
