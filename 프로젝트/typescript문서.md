@@ -118,3 +118,14 @@ inteface Arr{
 length: number;
 key[number]: string;
 }
+<!-- 구조적 타이핑 -->
+둘의 타입이같으면 결국 같은것으로인식
+interface Money{
+  a:number
+  b: string
+}
+interface Money2{
+  a:number
+  b:string
+}
+둘이같은거임 같은객체로인식함
