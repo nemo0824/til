@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>삼각형 판별</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        const arr = [a, b, c];
+        const sortedArr = arr.sort((a, b) => a - b);
+        if (sortedArr[2] > sortedArr[0] + sortedArr[1]) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+
+      console.log(solution(2, 5, 1));
+    </script>
+  </body>
+</html>

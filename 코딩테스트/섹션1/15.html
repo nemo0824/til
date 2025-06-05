@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가운데 문자 출력</title>
+  </head>
+  <body>
+    <script>
+      function solution(string) {
+        if (string.length % 2 === 1) {
+          const index = Math.floor(string.length / 2);
+          return string[index];
+        } else {
+          const index = Math.floor(string.length / 2);
+          return string[index - 1] + string[index];
+        }
+      }
+      let string = "study";
+      console.log(solution(string));
+      let good = "good";
+      console.log(solution(good));
+    </script>
+  </body>
+</html>

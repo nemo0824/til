@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>문자 찾기</title>
+  </head>
+  <body>
+    <script>
+      function solution(testString, string) {
+        let arr = testString.split("");
+        let count = 0;
+        arr.forEach((e) => {
+          if (e === string) {
+            count += 1;
+          }
+        });
+        return count;
+      }
+      let testString = "COMPUTERPROGRAMMING";
+      let string = "R";
+      console.log(solution(testString, string));
+    </script>
+  </body>
+</html>

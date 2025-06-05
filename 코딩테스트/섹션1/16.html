@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>중복문자제거</title>
+  </head>
+  <body>
+    <script>
+      function solution(string) {
+        if (string.length % 2 === 1) {
+          const index = Math.floor(string.length / 2);
+          return string[index];
+        } else {
+          const index = Math.floor(string.length / 2);
+          return string[index - 1] + string[index];
+        }
+      }
+      let string = "ksekkset";
+      console.log(solution(string));
+    </script>
+  </body>
+</html>

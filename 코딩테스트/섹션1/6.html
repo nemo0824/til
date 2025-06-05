@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>최소값구하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let odd = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 === 1) {
+            odd.push(arr[i]);
+          }
+        }
+        const total = odd.reduce((acc, cur) => acc + cur, 0);
+        const min = Math.min(...odd);
+        return [total, min];
+      }
+    </script>
+  </body>
+</html>

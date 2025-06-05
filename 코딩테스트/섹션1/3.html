@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>연필 개수</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        const das = n / 12;
+        const rest = n % 12;
+        if (rest) {
+          return Math.floor(das + 1);
+        } else {
+          return Math.floor(das);
+        }
+      }
+    </script>
+  </body>
+</html>

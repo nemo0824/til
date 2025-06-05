@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>대문자 찾기</title>
+  </head>
+  <body>
+    <script>
+      function solution(testString) {
+        let arr = testString.split("");
+        let count = 0;
+        const capital = [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "X",
+          "Y",
+          "Z",
+        ];
+        capital.map((e) => {
+          for (let i = 0; i < arr.length; i++) {
+            if (e === arr[i]) {
+              count += 1;
+            }
+          }
+        });
+        return count;
+      }
+      let testString = "KoreaTimeGood";
+      console.log(solution(testString));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>10부제</title>
+  </head>
+  <body>
+    <script>
+      function solution(no, arr) {
+        let count = 0;
+        for (let num of arr) {
+          const StringNum = num.toString();
+          const StringNo = no.toString();
+          if (StringNum[StringNum.length - 1] === StringNo) {
+            count += 1;
+          }
+        }
+        return count;
+      }
+    </script>
+  </body>
+</html>
