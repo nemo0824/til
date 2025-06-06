@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>등수가하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let max = 0;
+        let sum1 = 0;
+        let sum2 = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            // 행
+            sum1 += arr[i][j];
+            // 열
+            sum2 += arr[j][i];
+          }
+          sum1 = 0;
+          sum2 = 0;
+          max = Math.max(max, sum1, sum2);
+        }
+        //  대각
+        for (let i = 0; i < arr.length; i++) {
+          sum1 += arr[i][i];
+          sum2 += arr[i][arr.length - 1 - i];
+        }
+        return Math.max(max, sum1, sum2);
+
+        // 대각 더하기 0,0 1,1 2,2  0,4 1,3 2,2, 3,1 4,0
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
