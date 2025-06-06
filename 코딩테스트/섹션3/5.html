@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>문자열 압축</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        // 문자 대문자로 이루어진 문자열 입력받기
+        // 반복되는 문자 에다가 숫자 더하기 1일시는 표시 x
+        //
+        let count = 1;
+        let answer = "";
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] === str[i + 1]) {
+            count++;
+          } else {
+            answer += str[i];
+            if (count > 1) {
+              answer += count;
+              count = 1;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let str = "KKHSSSSSSSE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

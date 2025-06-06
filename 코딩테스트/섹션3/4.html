@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가장 짧은 문거</title>
+  </head>
+  <body>
+    <script>
+      function solution(str, t) {
+        // t의 문자의 위치를 찾아낸다
+        // t는 여러개일수도있다
+        // t와 현재 위치의 값의 가장 가까운값 추출해내기
+        let answer = [];
+        let temp = [];
+        for (let i = 0; i < str.length; i++) {
+          for (let j = 0; j < str.length; j++) {
+            if (str[j] === t) {
+              temp.push(Math.abs(i - j));
+            }
+          }
+          answer.push(Math.min(...temp));
+          temp = [];
+        }
+        return answer;
+      }
+
+      let str = "teachermode";
+      let t = "e";
+      console.log(solution(str, t));
+    </script>
+  </body>
+</html>

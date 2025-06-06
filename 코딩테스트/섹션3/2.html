@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>유효한 팰린드롬</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        //  전체 대문자
+        let upper = str
+          .replace(/[^a-z]/gi, "")
+          .toUpperCase()
+          .split(" ");
+        console.log(upper);
+        for (let i = 0; i < upper.length / 2; i++) {
+          console.log(upper[i]);
+          console.log(upper[upper.length - 1 - i].split("").reverse().join(""));
+          if (
+            upper[i] !==
+            upper[upper.length - 1 - i].split("").reverse().join("")
+          ) {
+            return "NO";
+          } else {
+            return "YES";
+          }
+        }
+      }
+      let str = "found7, time: study; Yduts; emit, 7Dnuof";
+
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
