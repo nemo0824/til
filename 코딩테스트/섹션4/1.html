@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>자릿수의 합</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let max = { total: 0, element: arr[0] };
+        arr.forEach((v) => {
+          let total = v
+            .toString()
+            .split("")
+            .reduce((acc, cur) => acc + Number(cur), 0);
+          if (max.total === total) {
+            max.element = max.element > v ? max.element : v;
+          }
+          if (max.total < total) {
+            max.total = total;
+            max.element = v;
+          }
+        });
+        return max.element;
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

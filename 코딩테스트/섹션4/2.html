@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>뒤집은 소수</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+        arr.forEach((v) => {
+          // 각숫자 뒤집은 숫자
+          let reversed = v.toString().split("").reverse().join("") * 1;
+          console.log(reversed);
+          if (isPrime(reversed)) {
+            answer.push(isPrime(reversed));
+          }
+        });
+        return answer;
+      }
+
+      function isPrime(n) {
+        if (n <= 1) return false;
+        for (let i = 2; i < Math.sqrt(n); i++) {
+          if (n % i === 0) return false;
+        }
+        return n;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
