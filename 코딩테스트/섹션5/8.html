@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>모든 아나그램 찾기</title>
+  </head>
+  <body>
+    <script>
+      function compareMaps(map1, map2) {}
+      function solution(str1, str2) {
+        let answer = 0;
+        let ts1 = new Map();
+        let ts2 = new Map();
+        for (let x of str1) {
+          if (ts1.has(x)) ts1.set(x, ts1.get(x) + 1);
+          else ts1.set(x, 1);
+        }
+
+        for (let i = 0; i < str2.length - 1; i++) {
+          if (ts2.has(s[i])) ts2.set(s[i], ts2.get(s[i] + 1));
+          else ts2.set(s[i], 1);
+        }
+        let lt = 0;
+
+        for (let rt = str2.length - 1; rt < str1.length; rt++) {
+          if (ts2.has(s[rt])) ts2.set(s[rt], ts2.get(s[rt] + 1));
+          else ts2.set(s[rt], 1);
+          if(compareMaps(ts1, sts2))
+        }
+      }
+
+      let str1 = "bacaAacba";
+      let str2 = "abc";
+      console.log(solution(str1, str2));
+
+      //슬라이딩윈도우
+    </script>
+  </body>
+</html>

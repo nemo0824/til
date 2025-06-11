@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>두 배열합치기</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let stack = [];
+        let answer = "YES";
+        for (let x of str) {
+          if ("(" === x) stack.push(x);
+          else {
+            if (stack.length === 0) return "NO";
+            stack.pop();
+          }
+        }
+        if (stack.length > 0) return "NO";
+        return answer;
+        console.log(stack);
+      }
+
+      let str = "()(())";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

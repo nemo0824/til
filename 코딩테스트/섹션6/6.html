@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>공주구하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(prNum, exceptNum) {
+        let member = [];
+        let count = 0;
+        //  member 나열하기
+        for (let i = 1; i <= prNum; i++) {
+          member.push(i);
+        }
+
+        while (member.length > 1) {
+          let popMen;
+          popMan = member.shift();
+          count++;
+          if (count === exceptNum) {
+            member.shift();
+            count = 0;
+          } else {
+            member.push(popMan);
+          }
+        }
+        return member;
+      }
+      // popman popman member.push 2
+      //
+
+      let prNum = 8;
+      let exceptNum = 3;
+
+      console.log(solution(prNum, exceptNum));
+      //1,2,3,4,5,6,7,8
+
+      // 4,5,6,7,8,1,2
+
+      // 7,8,1,2,4,5
+
+      //,2,4,5,6,7,8
+
+      //,5,6,7,1,2
+
+      //1,2,5,6
+
+      //6,1,2
+
+      //6,1
+
+      //1
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>두 배열합치기</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let stack = [];
+        for (let x of str) {
+          if (x !== ")") {
+            stack.push(x);
+          } else {
+            let reverse = stack.reverse();
+            let openIndex = reverse.indexOf("(");
+            reverse.splice(0, openIndex + 1);
+            stack = reverse.reverse();
+          }
+        }
+        console.log(stack);
+        return stack.join("");
+      }
+      // 1.")"가 아니면 모두 push 문자열, 또는 "("
+      // 2. stack 내부에서 해당 가장 가까운 ( 찾아서 거기까지 제거
+
+      let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

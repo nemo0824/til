@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>쇠 막대기</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = 0;
+        let stack = [];
+        for (let x of str) {
+          if (x === "(") {
+            stack.push(x);
+          } else {
+            // 레이저일떄
+            if (stack[stack.length - 1] === "(") {
+              stack.pop();
+              answer += stack.length;
+            } else {
+              // 레이저아닐때 + 끝인곳일떄
+              stack.pop();
+              answer += 1;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let str = "()(((()())(())()))(())";
+
+      console.log(solution(str));
+      // () 는 레이저
+      // (()()) 레이저 두개 , 파이프 1개
+      // 스택으로 해결 필요
+      // 레이저의 위치를 판별한다,
+      // 가장 가까운 ( )
+
+      // ()를 조회하고 밖에 묶여있는거 ( )있으면 레이저수+1
+      // 레이저를 묶는것들 제거 후 다음것 순회
+      // 레이저 묶는것들 한번더 제거 후 순회
+    </script>
+  </body>
+</html>
