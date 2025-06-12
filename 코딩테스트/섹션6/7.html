@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>교육과정 설계</title>
+  </head>
+  <body>
+    <script>
+      function solution(require, subject) {
+        let queue = require.split("");
+        for (let s of subject) {
+          if (s === queue[0]) {
+            queue.shift();
+          }
+        }
+        return queue.length === 0 ? "YES" : "NO";
+      }
+
+      // 순서대로 라는말은 큐를 사용해야함
+      // subject
+      let require = "CBA";
+      let subject = "CBDAGE";
+
+      console.log(solution(require, subject));
+    </script>
+  </body>
+</html>

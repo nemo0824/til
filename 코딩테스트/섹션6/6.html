@@ -9,21 +9,35 @@
         let member = [];
         let count = 0;
         //  member 나열하기
+
         for (let i = 1; i <= prNum; i++) {
           member.push(i);
         }
+        console.log(member);
 
         while (member.length > 1) {
-          let popMen;
-          popMan = member.shift();
-          count++;
-          if (count === exceptNum) {
+          if (count < exceptNum - 1) {
+            member.push(member.shift());
+            count++;
+          } else {
             member.shift();
             count = 0;
-          } else {
-            member.push(popMan);
           }
         }
+        console.log(member);
+
+        // while (member.length > 1) {
+        //   let popMen;
+        //   popMen = member.shift();
+        //   count++;
+        //   console.log(count);
+        //   if (count === exceptNum) {
+        //     member.shift();
+        //     count = 0;
+        //   } else {
+        //     member.push(popMen);
+        //   }
+        // }
         return member;
       }
       // popman popman member.push 2
