@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>결혼식</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let sorted = arr.sort((a, b) => a[0] - b[0]);
+        console.log(sorted);
+        let answer = [];
+        for (let i = 0; i < arr.length; i++) {
+          let count = 1;
+          let [a, b] = arr[i];
+          for (let j = i + 1; j < arr.length; j++) {
+            let [c, d] = arr[j];
+            if (b > d || a < d) {
+              count++;
+            }
+          }
+          answer.push(count);
+        }
+        return Math.max(...answer);
+      }
+      // b 나가는시간 > d 나가는시간
+      // a 들어온시간 < d 나간시간
+
+      let arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

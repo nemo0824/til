@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>LRU</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr, k) {
+        let task = Array.from({ length: k }).fill(0);
+        console.log(task);
+        for (let x of arr) {
+          // 3 내부 요소가 0일때
+          // 삽입하고 맨앞쪽으로 뒤에꺼 하나 빼기
+          if (task.includes(0)) {
+            task.unshift(x);
+            task.pop();
+          } else if (task.includes(x)) {
+            // 2. cache hit
+            // 내부에 있을때 해당것 해당위치에있는거 빼버리고
+            // 앞으로 삽입?
+            const indexNum = task.indexOf(x);
+            task.splice(indexNum, 1);
+            task.unshift(x);
+          } else if (!task.includes(x)) {
+            // 1. cache miss
+            // 내부에 없을떄는 맨앞에 삽입
+            // 뒤의것 빼기
+            task.pop();
+            task.unshift(x);
+          }
+        }
+        console.log(task);
+      }
+
+      let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
+      let k = 5;
+      console.log(solution(arr, k));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>선택 정렬</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        for (let i = 0; i < arr.length - 1; i++) {
+          let index = i;
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[index] > arr[j]) {
+              index = j;
+            }
+          }
+          [arr[i], arr[index]] = [arr[index], arr[i]];
+        }
+        console.log(arr);
+      }
+
+      // 순서대로 라는말은 큐를 사용해야함
+      // subject
+      let arr = [13, 5, 11, 7, 23, 15];
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
