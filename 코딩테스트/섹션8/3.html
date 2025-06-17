@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>이진트리 순회(깊이우선탐색)</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = "";
+        function DFS(n) {
+          if (n > 7) return;
+          else {
+            console.log(n);
+            DFS(n * 2);
+            DFS(n * 2 + 1);
+          }
+        }
+        DFS(n);
+      }
+
+      console.log(solution(1));
+    </script>
+    <!-- 
+     1. 전위 순회 => 부모가 먼저
+     2. 중위 순위 => 부모가 중간
+     3. 후위 순위 => 부모가 뒤 
+      -->
+  </body>
+</html>

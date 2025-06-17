@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>재귀함수와 스택프레임</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        function DFS(i) {
+          if (i === 0) return;
+          else {
+            console.log(i);
+            DFS(i - 1);
+          }
+        }
+        DFS(n);
+      }
+
+      function solution1(n) {
+        function DFS(i) {
+          if (i === 0) return;
+          else {
+            DFS(i - 1);
+            console.log(i);
+          }
+        }
+        DFS(n);
+      }
+
+      let n = 3;
+      console.log(solution(n));
+      console.log(solution1(n));
+
+      // 콜스택에 따라서 출력이 다르다 순서가
+      // 2번째 방법 진행시 callstack에 해당 지역변수, 매개변수등이저장됨
+      // 콘솔로 출력하기전에 바로 다음 DFS 출력
+      // 콜스택엔 DFS(3)DFS(2)DFS(1) 순서
+    </script>
+  </body>
+</html>

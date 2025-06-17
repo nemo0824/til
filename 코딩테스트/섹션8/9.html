@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>순열 구하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr, n) {
+        let answer = [];
+        m = arr.length;
+        let ch = Array.from({ length: m }, () => 0);
+        let tmp = Array.from({ length: n }, () => 0);
+
+        function DFS(L) {
+          if (L === n) {
+            answer.push(tmp.slice());
+          } else {
+            for (let i = 0; i < m; i++) {
+              if (ch[i] === 0) {
+                ch[i] = 1;
+                tmp[L] = arr[i];
+                DFS(L + 1);
+                ch[i] = 0;
+              }
+            }
+          }
+        }
+        DFS(0);
+        return answer;
+      }
+
+      let arr = [3, 6, 9];
+      let n = 2;
+      console.log(solution(arr, n));
+    </script>
+  </body>
+</html>

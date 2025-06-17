@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>동전교환</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr, value) {
+        let sorted = arr.sort((a, b) => b - a);
+        let answer = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (value === 0) {
+            return answer;
+          }
+          answer += Math.floor(value / arr[i]);
+          value = value % arr[i];
+        }
+      }
+
+      function solutionDFS(arr, value) {
+        let answer = Number.MAX_SAFE_INTEGER;
+
+        function DFS(L, sum) {
+          if (sum > value) return;
+          if (sum === value) {
+            answer = Math.min(answer, L);
+          } else {
+            for (let i = 0; i < arr.length; i++) {
+              DFS(L + 1, sum + arr[i]);
+            }
+          }
+        }
+        DFS(0, 0);
+        return answer;
+      }
+
+      let arr = [1, 2, 5];
+      let value = 15;
+      console.log(solution(arr, value));
+      console.log(solutionDFS(arr, value));
+    </script>
+  </body>
+</html>

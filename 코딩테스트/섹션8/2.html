@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>재귀함수를 이용한 이진수 출력</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = "";
+        function toTwo(n) {
+          if (n === 0) return;
+          else {
+            toTwo(parseInt(n / 2));
+            answer += String(n % 2);
+          }
+        }
+        toTwo(n);
+        return answer;
+      }
+
+      console.log(solution(11));
+    </script>
+  </body>
+</html>
