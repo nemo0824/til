@@ -1,0 +1,23 @@
+<script>
+  function solution() {
+    let queue = [];
+    let answer = "";
+    function BFS() {
+      // queue의 길이가 있을때만
+      while (queue.length) {
+        let shifted = queue.shift();
+        console.log(shifted);
+        answer += shifted + " ";
+        for (next of [shifted * 2, shifted * 2 + 1]) {
+          if (next > 7) continue;
+          queue.push(next);
+        }
+      }
+    }
+    queue.push(1);
+    BFS();
+    return answer;
+  }
+
+  console.log(solution());
+</script>

@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>부분집합 구하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let ch = Array.from({ length: n + 1 }, () => 0);
+        let answer = [];
+
+        function DFS(L) {
+          if (n < L) {
+            let temp = "";
+            for (let i = 0; i < ch.length; i++) {
+              if (ch[i] === 1) {
+                temp += String(i);
+              }
+            }
+            if (temp !== "") {
+              answer.push(temp);
+            }
+          } else {
+            ch[L] = 1;
+            DFS(L + 1);
+            ch[L] = 0;
+            DFS(L + 1);
+          }
+        }
+        ch[1] = 1;
+        DFS(1);
+        return answer;
+      }
+
+      let n = 3;
+      console.log(solution(n));
+    </script>
+  </body>
+</html>

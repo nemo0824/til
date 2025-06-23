@@ -1,0 +1,28 @@
+<script>
+  function solution(s) {
+    let mapping = { "}": "{", ")": "(", "]": "[" };
+    let sArr = s.split("");
+    let stack = [];
+    let count = 0;
+    //  회전에 대한 반복문
+    for (let i = 0; i < sArr.length; i++) {
+      //해당 배열 요소 하나에 대한 반복문
+      for (let j = 0; j < sArr.length; j++) {
+        let char = sArr[i];
+        //여는괄호일떄
+        if ("{" === char || "(" === char || "[" === char) {
+          stack.push(char);
+        } else {
+          if (stack.length === 0 || stack.pop() !== mapping[char]) {
+            break;
+          }
+        }
+      }
+      if (stack.length > 0) count++;
+      let popchar = sArr.shift();
+      sArr.push(popchar);
+    }
+
+    return count;
+  }
+</script>

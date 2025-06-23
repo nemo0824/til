@@ -5,20 +5,23 @@
   </head>
   <body>
     <script>
+      //  순열: 순서가 있는것. (중복불가?)
+      //  조합 : 순서가 없는것 (중복가능)
       function solution(arr, n) {
+        //  체크배열 for 중복 방지용
+        let ch = Array.from({ length: arr.length }, () => 0);
+        //  임시 배열 담는용
+        let temp = Array.from({ length: n }, () => 0);
+        //  제출 배열 담는용
         let answer = [];
-        m = arr.length;
-        let ch = Array.from({ length: m }, () => 0);
-        let tmp = Array.from({ length: n }, () => 0);
-
         function DFS(L) {
           if (L === n) {
-            answer.push(tmp.slice());
+            answer.push(temp.slice());
           } else {
-            for (let i = 0; i < m; i++) {
+            for (let i = 0; i < arr.length; i++) {
               if (ch[i] === 0) {
                 ch[i] = 1;
-                tmp[L] = arr[i];
+                temp[L] = arr[i];
                 DFS(L + 1);
                 ch[i] = 0;
               }

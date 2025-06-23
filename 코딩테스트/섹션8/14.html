@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>수열 추측하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr, n, k, m) {
+        let count = 0;
+        let tmp = Array.from({ length: k });
+        function DFS(L, s, sum) {
+          if (L === k) {
+            if (sum % 6 === 0) {
+              count++;
+              console.log(sum, tmp);
+            }
+          } else {
+            for (let i = s; i < n; i++) {
+              tmp[L] = arr[i];
+              DFS(L + 1, i + 1, sum + arr[i]);
+            }
+          }
+        }
+
+        DFS(0, 0, 0);
+        return count;
+      }
+
+      let arr = [2, 4, 5, 8, 12];
+      let n = 5;
+      let k = 3;
+      let m = 6;
+      console.log(solution(arr, n, k, m));
+    </script>
+  </body>
+</html>
