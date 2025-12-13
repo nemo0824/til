@@ -1,27 +1,39 @@
 <script>
+  // BFS
   function solution(board, n) {
     let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
     let dy = [0, 1, 1, 1, 0, -1, -1, -1];
     let answer = 0;
-    function DFS(x, y) {
-      board[x][y] = 0;
-      for (let i = 0; i < 8; i++) {
-        let nx = x + dx[i];
-        let ny = y + dy[i];
-        if (nx >= 0 && nx <= 6 && ny >= 0 && ny <= 6 && board[nx][ny] === 1) {
-          DFS(nx, ny);
-        }
-      }
-    }
-    for (let i = 0; i < n; i++) {
-      for (let j = 0; j < n; j++) {
+    let queue = [];
+    // BFS 하기전 각 요들을 순회하는것
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
         if (board[i][j] === 1) {
+          // 무한반복을 막기위해서
+          board[i][j] = 0;
+          queue.push([i, j]);
           answer++;
-          DFS(i, j);
+          while (queue.length) {
+            let [x, y] = queue.shift();
+            // 큐에있는 요소 뽑아오기
+            for (let k = 0; i < 8; k++) {
+              let nx = x + dx[k];
+              let ny = y + dy[k];
+              if (
+                nx >= 0 &&
+                nx <= 6 &&
+                ny >= 0 &&
+                ny <= 6 &&
+                board[nx][ny] === 1
+              ) {
+                board[nx][ny] = 0;
+                queue.push(board[nx][ny]);
+              }
+            }
+          }
         }
       }
     }
-    return answer;
   }
   const board = [
     [1, 1, 0, 0, 0, 1, 0],

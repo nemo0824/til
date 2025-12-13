@@ -1,27 +1,25 @@
 <script>
-  function solution(s, e) {
-    // 몇회인지
+  function solution(board) {
+    let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+    let dy = [0, 1, 1, 1, 0, -1, -1, -1];
     let answer = 0;
-    //체크배열
-    let ch = Array.from({ length: 10001 }, () => 0);
-    // 실제값 배열
-    let dis = Array.from({ length: 10001 }, () => 0);
-    // 큐
-    let queue = [];
-    ch[s] = 1;
-    queue.push(s);
-    dis[s] = 0;
-
-    while (queue.length) {
-      let x = queue.shift();
-      for (let nx of [x - 1, x + 1, x + 5]) {
-        if (nx === e) {
-          return dis[x] + 1;
+    function DFS(x, y) {
+      board[x][y] = 0;
+      console.log(x, y);
+      for (let i = 0; i < 8; i++) {
+        let nx = x + dx[i];
+        let ny = y + dy[i];
+        if (nx >= 0 && nx <= 6 && ny >= 0 && ny <= 6 && board[nx][ny] === 1) {
+          DFS(nx, ny);
         }
-        if (nx > 0 && nx <= 10000 && ch[nx] === 0) {
-          ch[nx] = 1;
-          queue.push(nx);
-          dis[nx] = dis[x] + 1;
+      }
+    }
+    for (let i = 0; i < 7; i++) {
+      for (let j = 0; j < 7; j++) {
+        if (board[i][j] === 1) {
+          answer++;
+          DFS(i, j);
+          console.log("end");
         }
       }
     }
@@ -38,8 +36,8 @@
   ];
   console.log(solution(board));
   /*
- N*N의 섬나라 아일랜드의 지도가 격자판의 정보로 주어집니다. 각 섬은 1로 표시되어 상하좌
-우와 대각선으로 연결되어 있으며, 0은 바다입니다. 섬나라 아일랜드에 몇 개의 섬이 있는지
-구하는 프로그램을 작성하세요.
-  */
+   N*N의 섬나라 아일랜드의 지도가 격자판의 정보로 주어집니다. 각 섬은 1로 표시되어 상하좌
+  우와 대각선으로 연결되어 있으며, 0은 바다입니다. 섬나라 아일랜드에 몇 개의 섬이 있는지
+  구하는 프로그램을 작성하세요.
+    */
 </script>

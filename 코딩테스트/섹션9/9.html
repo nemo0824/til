@@ -1,0 +1,60 @@
+<script>
+  function solution(scores) {
+    const problemNumber = scores[0].length;
+    const totalByProblem = Array(problemNumber).fill(0);
+
+    // 문제별 총점 계산
+    for (const score of scores) {
+      for (let i = 0; i < problemNumber; i++) {
+        totalByProblem[i] += score[i];
+      }
+    }
+    // 이 때배열은
+    //  totalByProblem[264, 264]
+
+    // 가장 어려운 문제 인덱스 (총점이 가장 낮은 문제)
+    let hardestProblemIndex = 0;
+    for (let i = 1; i < problemNumber; i++) {
+      if (totalByProblem[i] < totalByProblem[hardestProblemIndex]) {
+        hardestProblemIndex = i;
+      }
+    }
+    // 여기서 hardeestProblemIndex는 그럼 0 동점이니까?
+
+    // 각 응시자에 대해 총점, 어려운 문제 점수, ID 기록
+    const applicants = scores.map((score, index) => ({
+      id: index,
+      total: score.reduce((sum, val) => sum + val, 0),
+      hard: score[hardestProblemIndex],
+    }));
+
+    // 정렬
+    applicants.sort((a, b) => {
+      if (b.total !== a.total) return b.total - a.total; // 총점 기준 내림차순
+      if (b.hard !== a.hard) return b.hard - a.hard; // 어려운 문제 점수 내림차순
+      return a.id - b.id; // ID 기준 오름차순
+    });
+
+    // 순위 매기기
+    const result = Array(scores.length);
+    applicants.forEach((applicant, rankIndex) => {
+      result[applicant.id] = rankIndex + 1;
+    });
+
+    return result;
+  }
+  const scores = [
+    [85, 90],
+    [91, 87],
+    [88, 87],
+  ];
+  const n = 1;
+  console.log(solution(scores));
+
+  // 1. 문제별 총점 계산
+  // 2. 총점 계산
+  // 3.정렬
+  // 우선순위
+  // 1.어려운문제에 score
+  // 2. 동점일경우 id번호가 빠른경우 우선
+</script>

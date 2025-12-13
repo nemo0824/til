@@ -1,0 +1,32 @@
+<script>
+  // BFS
+  function solution(square, n) {
+    for (let i = 0; i < n; i++) {
+      const squareSize = square.length;
+      const newSize = square.length * 2;
+
+      const newSquare = Array.from({ length: newSize }, () =>
+        Array(newSize).fill(0)
+      );
+      for (let row = 0; row < squareSize; row++) {
+        for (let col = 0; col < squareSize; col++) {
+          const val = square[row][col];
+          newSquare[row][col] = val;
+          newSquare[row][newSize - 1 - col] = val;
+          newSquare[newSize - 1 - row][col] = val;
+          newSquare[newSize - 1 - row][newSize - 1 - col] = val;
+        }
+      }
+      square = newSquare;
+    }
+    return square;
+  }
+  const square = [
+    [1, 0, 1, 1],
+    [1, 0, 1, 1],
+    [1, 0, 1, 1],
+    [1, 0, 1, 1],
+  ];
+  const n = 1;
+  console.log(solution(square, n));
+</script>

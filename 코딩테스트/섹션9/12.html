@@ -1,0 +1,49 @@
+<script>
+  function solution(board) {
+    const n = 5;
+    const directions = [
+      [0, 1], // 우
+      [1, 0], // 하
+      [0, -1], // 좌
+      [-1, 0], // 상
+    ];
+    let maxLength = 0;
+
+    const dfs = (x, y, visited, usedException, length) => {
+      maxLength = Math.max(maxLength, length);
+
+      for (const [dx, dy] of directions) {
+        const nx = x + dx;
+        const ny = y + dy;
+
+        if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+        if (visited[nx][ny]) continue;
+
+        const currentChar = board[x][y];
+        const nextChar = board[nx][ny];
+
+        if (nextChar > currentChar) {
+          visited[nx][ny] = true;
+          dfs(nx, ny, visited, usedException, length + 1);
+          visited[nx][ny] = false;
+        } else if (!usedException) {
+          // 단 한 번 예외 이동 허용
+          visited[nx][ny] = true;
+          dfs(nx, ny, visited, true, length + 1);
+          visited[nx][ny] = false;
+        }
+      }
+    };
+
+    // 모든 칸에서 시작
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        const visited = Array.from({ length: n }, () => Array(n).fill(false));
+        visited[i][j] = true;
+        dfs(i, j, visited, false, 1);
+      }
+    }
+
+    return maxLength;
+  }
+</script>

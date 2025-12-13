@@ -1,0 +1,42 @@
+<script>
+  function solution(grid) {
+    const rows = grid.length;
+    const cols = grid[0].length;
+
+    // 한 줄만 사용하는 DP 배열 (공간 최적화)
+    const dp = Array(cols).fill(0);
+
+    // 첫 번째 행 초기화
+    dp[0] = grid[0][0];
+    for (let j = 1; j < cols; j++) {
+      dp[j] = dp[j - 1] + grid[0][j];
+      console.log("첫번째 행 초기화", (dp[j] = dp[j - 1] + grid[0][j]));
+    }
+
+    // 나머지 행 처리
+    for (let i = 1; i < rows; i++) {
+      // 맨 왼쪽 열은 위에서만 올 수 있음
+      dp[0] += grid[i][0];
+      for (let j = 1; j < cols; j++) {
+        dp[j] = Math.min(dp[j], dp[j - 1]) + grid[i][j];
+      }
+    }
+
+    return dp[cols - 1];
+  }
+
+  solution([
+    [1, 8, 3, 2],
+    [7, 4, 6, 5],
+  ]);
+</script>
+<!-- 
+const dp = Array.from({ length: R }, () => Array(C).fill(0));
+dp[0][0] = grid[0][0];
+
+for (let i = 0; i < R; i++) {
+  for (let j = 0; j < C; j++) {
+    if (i > 0) dp[i][j] = Math.min(dp[i][j], dp[i-1][j] + grid[i][j]);
+    if (j > 0) dp[i][j] = Math.min(dp[i][j], dp[i][j-1] + grid[i][j]);
+  }
+} -->
