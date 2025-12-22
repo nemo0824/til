@@ -20,3 +20,20 @@ const renderWrapper = (component) => {
     return element;
   };
 };
+
+const add = (name, component) => {
+  registry[name] = renderWrapper(component);
+};
+
+const renderRoot = (root, state) => {
+  const cloneComponent = (root) => {
+    return root.cloneNode(true);
+  };
+
+  return renderWrapper(cloneComponent)(root, state);
+};
+
+export default {
+  add,
+  renderRoot,
+};
