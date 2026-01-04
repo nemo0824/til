@@ -17,7 +17,7 @@ export default () => {
   };
 
   router.addRoute = (fragment, component) => {
-    router.push({ fragment, component });
+    routes.push({ fragment, component });
 
     return router;
   };
