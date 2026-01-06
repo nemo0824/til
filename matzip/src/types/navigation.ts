@@ -9,7 +9,7 @@ export type MapStackPramsList = {
 export type AuthStackPramsList = {
   AuthHome: undefined;
   Login: undefined;
-  Signup: undefined;
+  SignUp: undefined;
 };
 
 export type FeedStackPramsList = {
