@@ -9,7 +9,7 @@ const LoginScreen = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
         <InputField placeholder="이메일" errorMessage="이메일 입력바람" />
-        <InputField placeholder="비밀번호" />
+        <InputField placeholder="비밀번호" secureTextEntry />
       </View>
       <CustomButton label="로그인" variant="filled" size="large" />
     </SafeAreaView>
