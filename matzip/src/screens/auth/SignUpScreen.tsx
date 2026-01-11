@@ -1,62 +1,33 @@
 import { StyleSheet, View } from 'react-native';
-import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import InputField from '@/components/InputField';
 import CustomButton from '@/components/CustomButton';
+import { useForm } from '@/hooks/useForm';
 
 const SignUpScreen = () => {
-  const [value, setValue] = useState({
-    email: '',
-    password: '',
-    passwordConfirm: '',
+  const signUp = useForm({
+    initialValue: { email: '', password: '', passwordConfirm: '' },
   });
-
-  const [touched, setTouched] = useState({
-    email: false,
-    password: false,
-    passwordConfirm: false,
-  });
-
-  const [error, setError] = useState({
-    email: false,
-    password: false,
-    passwordConfirm: false,
-  });
-
-  const handleValueChange = (name: string, text: string) => {
-    setValue(prev => ({ ...prev, [name]: text }));
-  };
-
-  const handleBlur = (name: string) => {
-    setTouched(prev => ({ ...prev, [name]: true }));
-  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
         <InputField
           placeholder="이메일"
-          onChangeText={text => handleValueChange('email', text)}
-          value={value.email}
-          touched={touched.email}
-          onBlur={() => handleBlur('email')}
+          touched={signUp.touched.email}
+          {...signUp.getTextInputProps('email')}
         />
         <InputField
           placeholder="비밀번호"
-          onChangeText={text => handleValueChange('password', text)}
-          value={value.password}
-          touched={touched.password}
           secureTextEntry
           textContentType="oneTimeCode"
-          onBlur={() => handleBlur('password')}
+          touched={signUp.touched.password}
+          {...signUp.getTextInputProps('password')}
         />
         <InputField
           placeholder="비밀번호 확인"
-          onChangeText={text => handleValueChange('passwordConfirm', text)}
-          value={value.passwordConfirm}
           secureTextEntry
-          onBlur={() => handleBlur('passwordConfirm')}
-          touched={touched.passwordConfirm}
+          {...signUp.getTextInputProps('passwordConfirm')}
         />
       </View>
       <CustomButton label="회원가입" variant="filled" size="large" />

@@ -3,15 +3,28 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import InputField from '@/components/InputField';
 import CustomButton from '@/components/CustomButton';
+import { useForm } from '@/hooks/useForm';
 
 const LoginScreen = () => {
+  const login = useForm({
+    initialValue: { email: '', password: '' },
+  });
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
-        <InputField placeholder="이메일" errorMessage="이메일 입력바람" />
+        <InputField
+          placeholder="이메일"
+          errorMessage="이메일 입력바람"
+          {...login.getTextInputProps('email')}
+        />
         <InputField placeholder="비밀번호" secureTextEntry />
       </View>
-      <CustomButton label="로그인" variant="filled" size="large" />
+      <CustomButton
+        label="로그인"
+        variant="filled"
+        size="large"
+        {...login.getTextInputProps('password')}
+      />
     </SafeAreaView>
   );
 };
