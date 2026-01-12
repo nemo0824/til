@@ -1,22 +1,24 @@
 import { View, Text, TextInputProps, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { Ref } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import { colors } from '@/constants/colors';
 
 interface InputField extends TextInputProps {
   errorMessage?: string;
   touched?: boolean;
+  ref?: Ref<TextInput>;
 }
 
-const InputField = ({ errorMessage, touched, ...props }: InputField) => {
+const InputField = ({ errorMessage, touched, ref, ...props }: InputField) => {
   return (
     <View>
       <TextInput
-        {...props}
+        ref={ref}
         style={[
           styles.input,
           touched && Boolean(errorMessage) && styles.inputError,
         ]}
+        {...props}
       />
       {touched && Boolean(errorMessage) && (
         <Text style={styles.errorMessage}>{errorMessage}</Text>
