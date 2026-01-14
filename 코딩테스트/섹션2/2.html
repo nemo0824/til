@@ -19,6 +19,25 @@
 
       let arr = [130, 135, 148, 140, 145, 150, 150, 153];
       console.log(solution(arr));
+      jQuery;
+
+      function solution1(arr) {
+        // 1. max값 할당
+        // 2. 순회하면서 본인보다 큰 max값을 찾는다 그때 max값 변경
+        // 3. max값 바뀔때까지 count ++ 한다
+        // 4. 본인보다 큰값이면 count 같거나 작으면 카운xm x
+        let max = arr[0];
+        let count = 1;
+
+        for (let i = 1; i < arr.length; i++) {
+          if (max < arr[i]) {
+            max = arr[i];
+            count++;
+          }
+        }
+
+        return count;
+      }
     </script>
   </body>
 </html>

@@ -23,6 +23,23 @@
       let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
 
       console.log(solution(arr));
+
+      function solution1(arr) {
+        // 전제
+        // 1. 처음 맞추면 1점 , 연속으로맞추면 여속으로맞춘만큼 n점 , 총점 return
+        let answer = 0;
+        let score = 1;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === 1) {
+            answer += score;
+            score++;
+          } else {
+            score = 1;
+          }
+        }
+
+        return answer;
+      }
     </script>
   </body>
 </html>
