@@ -5,22 +5,23 @@
   </head>
   <body>
     <script>
+      // 1. 만약 자리수의 합이 같을경우 실제 값이 더 큰게 이긴다
       function solution(arr) {
-        let max = { total: 0, element: arr[0] };
-        arr.forEach((v) => {
-          let total = v
+        let max = { sum: 0, value: arr[0] };
+
+        for (let i = 0; i < arr.length; i++) {
+          let sum = arr[i]
             .toString()
             .split("")
             .reduce((acc, cur) => acc + Number(cur), 0);
-          if (max.total === total) {
-            max.element = max.element > v ? max.element : v;
+          if (max.sum < sum) max = { sum, value: arr[i] };
+
+          if (max.sum === sum) {
+            if (max.value < arr[i]) {
+              max = { sum, value: arr[i] };
+            }
           }
-          if (max.total < total) {
-            max.total = total;
-            max.element = v;
-          }
-        });
-        return max.element;
+        }
       }
 
       let arr = [128, 460, 603, 40, 521, 137, 123];

@@ -19,6 +19,11 @@
         const sorted = Array.from(temp).sort((a, b) => b - a);
         return sorted[n - 1];
       }
+
+      // 1. 중복줄이기 new Set으로 중복줄이기
+      // 1,2,3, 3장의 더하는것이니까 3중 for문 각각 중복 불가 선택시
+      // 해당 temp에 추가
+      // 내림차순으로 정렬후 n-1번째값 넣기
       // k 번쨰의 수
       let n = 3;
       // 숫
